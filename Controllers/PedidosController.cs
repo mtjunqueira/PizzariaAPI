@@ -106,7 +106,7 @@ namespace PizzariaAPI.Controllers
             _context.Pedidos.Add(pedido);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPedido", new { id = pedido.Id }, pedido);
+            return pedido;
         }
 
         // DELETE: api/Pedidos/5

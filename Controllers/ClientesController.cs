@@ -34,8 +34,8 @@ namespace PizzariaAPI.Controllers
         public async Task<ActionResult<Cliente>> GetLoginCliente(string email, string senha)
         {
             string senhaCripto = PizzariaAPI.Util.Util.CriptoMd5(senha);
-            var cliente = await _context.Clientes.Where(x=>x.Email == email && senha == senhaCripto).FirstOrDefaultAsync();
-
+            var cliente = await _context.Clientes.Where(x => x.Email == email && x.Senha == senhaCripto).FirstOrDefaultAsync();
+            
             if (cliente == null)
             {
                 return NotFound();
@@ -94,6 +94,13 @@ namespace PizzariaAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Cliente>> PostCliente(Cliente cliente)
         {
+            string senhaCripto = "";
+            if (cliente.Senha != "")
+            {
+                senhaCripto = PizzariaAPI.Util.Util.CriptoMd5(cliente.Senha);
+                cliente.Senha = senhaCripto;
+            }
+
             _context.Clientes.Add(cliente);
             await _context.SaveChangesAsync();
 
