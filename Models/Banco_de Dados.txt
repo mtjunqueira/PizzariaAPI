@@ -1,0 +1,336 @@
+﻿USE [Pizzaria]
+GO
+/****** Object:  Table [dbo].[Cliente]    Script Date: 09/09/2022 19:37:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Cliente]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Cliente](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [varchar](80) NULL,
+	[CPF] [varchar](13) NULL,
+	[Email] [varchar](80) NULL,
+	[Senha] [varchar](80) NULL,
+	[Celular] [varchar](15) NULL,
+ CONSTRAINT [PK_Cliente] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[EnderecoCliente]    Script Date: 09/09/2022 19:37:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[EnderecoCliente]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[EnderecoCliente](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Logradouro] [varchar](80) NULL,
+	[Numero] [varchar](20) NULL,
+	[Complemento] [varchar](80) NULL,
+	[Bairro] [varchar](80) NULL,
+	[CEP] [varchar](10) NULL,
+	[IdCliente] [int] NULL,
+ CONSTRAINT [PK_EnderecoCliente] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[ItemPedido]    Script Date: 09/09/2022 19:37:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ItemPedido]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[ItemPedido](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdPizza1] [int] NULL,
+	[IdPizza2] [int] NULL,
+	[Valor] [decimal](18, 2) NULL,
+	[IdPedido] [int] NOT NULL,
+ CONSTRAINT [PK_ItemPedido] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[Pedido]    Script Date: 09/09/2022 19:37:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Pedido]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Pedido](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[IdCliente] [int] NULL,
+	[ValorTotal] [decimal](18, 2) NULL,
+	[Finalizado] [bit] NULL,
+	[Entregue] [bit] NULL,
+ CONSTRAINT [PK_Pedido] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+/****** Object:  Table [dbo].[Pizza]    Script Date: 09/09/2022 19:37:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Pizza]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[Pizza](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Pizza] [varchar](50) NULL,
+	[Descricao] [varchar](350) NULL,
+	[Valor] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_Pizza] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET IDENTITY_INSERT [dbo].[Cliente] ON 
+
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (27, N'Marcelo ', N'05398308602', N'marcelo@mtjtecnologia.com.br', N'f62fd389f011877345e328dc32e40431', N'(31) 98508-9258')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (30, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (31, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (32, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (33, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (34, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (35, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (36, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+INSERT [dbo].[Cliente] ([Id], [Nome], [CPF], [Email], [Senha], [Celular]) VALUES (37, N'Jõao Ninguem ', N'012345678-90', N'joaoninguem@yahoo.com.br', NULL, N'(31) 99999-8888')
+GO
+SET IDENTITY_INSERT [dbo].[Cliente] OFF
+GO
+SET IDENTITY_INSERT [dbo].[EnderecoCliente] ON 
+
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (27, N'rua Hidra ', N'529', NULL, N'Santa Lúcia', N'30360-300', 27)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (30, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 30)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (31, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 31)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (32, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 32)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (33, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 33)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (34, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 34)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (35, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 35)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (36, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 36)
+GO
+INSERT [dbo].[EnderecoCliente] ([Id], [Logradouro], [Numero], [Complemento], [Bairro], [CEP], [IdCliente]) VALUES (37, N'rua Ibitipoca ', N'16', NULL, N'Luxemburgo', N'30034-010', 37)
+GO
+SET IDENTITY_INSERT [dbo].[EnderecoCliente] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ItemPedido] ON 
+
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (20, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 10)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (21, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 10)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (22, 1, 2, CAST(46.25 AS Decimal(18, 2)), 11)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (23, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 11)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (25, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 12)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (26, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 12)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (27, 1, 2, CAST(46.25 AS Decimal(18, 2)), 13)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (28, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 13)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (30, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 14)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (31, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 14)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (32, 1, 2, CAST(46.25 AS Decimal(18, 2)), 15)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (33, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 15)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (35, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 16)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (36, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 16)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (37, 1, 2, CAST(46.25 AS Decimal(18, 2)), 17)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (38, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 17)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (40, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 18)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (41, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 18)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (42, 1, 2, CAST(46.25 AS Decimal(18, 2)), 19)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (43, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 19)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (45, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 20)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (46, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 20)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (47, 1, 2, CAST(46.25 AS Decimal(18, 2)), 21)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (48, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 21)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (50, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 22)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (51, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 22)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (52, 1, 2, CAST(46.25 AS Decimal(18, 2)), 23)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (53, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 23)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (55, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 24)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (56, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 24)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (57, 1, 2, CAST(46.25 AS Decimal(18, 2)), 25)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (58, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 25)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (59, 1, 2, CAST(46.25 AS Decimal(18, 2)), 26)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (60, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 26)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (61, 4, NULL, CAST(45.00 AS Decimal(18, 2)), 27)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (62, 5, NULL, CAST(59.99 AS Decimal(18, 2)), 27)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (63, 1, 2, CAST(46.25 AS Decimal(18, 2)), 28)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (64, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 28)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (65, 1, 2, CAST(46.25 AS Decimal(18, 2)), 29)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (66, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 29)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (67, 1, 2, CAST(46.25 AS Decimal(18, 2)), 30)
+GO
+INSERT [dbo].[ItemPedido] ([Id], [IdPizza1], [IdPizza2], [Valor], [IdPedido]) VALUES (68, 3, NULL, CAST(55.00 AS Decimal(18, 2)), 30)
+GO
+SET IDENTITY_INSERT [dbo].[ItemPedido] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Pedido] ON 
+
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (10, 30, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (11, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (12, 31, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (13, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (14, 32, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (15, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (16, 33, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (17, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (18, 34, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (19, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (20, 35, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (21, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (22, 36, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (23, 27, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (24, 37, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (25, NULL, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (26, NULL, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (27, NULL, CAST(104.99 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (28, NULL, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (29, NULL, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+INSERT [dbo].[Pedido] ([Id], [IdCliente], [ValorTotal], [Finalizado], [Entregue]) VALUES (30, NULL, CAST(101.25 AS Decimal(18, 2)), 0, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Pedido] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Pizza] ON 
+
+GO
+INSERT [dbo].[Pizza] ([Id], [Pizza], [Descricao], [Valor]) VALUES (1, N'3 Queijos', NULL, CAST(50.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[Pizza] ([Id], [Pizza], [Descricao], [Valor]) VALUES (2, N'Mussarela', NULL, CAST(42.50 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[Pizza] ([Id], [Pizza], [Descricao], [Valor]) VALUES (3, N'Pepperoni', NULL, CAST(55.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[Pizza] ([Id], [Pizza], [Descricao], [Valor]) VALUES (4, N'Portuguesa', NULL, CAST(45.00 AS Decimal(18, 2)))
+GO
+INSERT [dbo].[Pizza] ([Id], [Pizza], [Descricao], [Valor]) VALUES (5, N'Veggie', NULL, CAST(59.99 AS Decimal(18, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[Pizza] OFF
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_EnderecoCliente_Cliente]') AND parent_object_id = OBJECT_ID(N'[dbo].[EnderecoCliente]'))
+ALTER TABLE [dbo].[EnderecoCliente]  WITH CHECK ADD  CONSTRAINT [FK_EnderecoCliente_Cliente] FOREIGN KEY([IdCliente])
+REFERENCES [dbo].[Cliente] ([Id])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_EnderecoCliente_Cliente]') AND parent_object_id = OBJECT_ID(N'[dbo].[EnderecoCliente]'))
+ALTER TABLE [dbo].[EnderecoCliente] CHECK CONSTRAINT [FK_EnderecoCliente_Cliente]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pedido]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido]  WITH CHECK ADD  CONSTRAINT [FK_ItemPedido_Pedido] FOREIGN KEY([IdPedido])
+REFERENCES [dbo].[Pedido] ([Id])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pedido]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido] CHECK CONSTRAINT [FK_ItemPedido_Pedido]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pizza]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido]  WITH CHECK ADD  CONSTRAINT [FK_ItemPedido_Pizza] FOREIGN KEY([IdPizza1])
+REFERENCES [dbo].[Pizza] ([Id])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pizza]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido] CHECK CONSTRAINT [FK_ItemPedido_Pizza]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pizza1]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido]  WITH CHECK ADD  CONSTRAINT [FK_ItemPedido_Pizza1] FOREIGN KEY([IdPizza2])
+REFERENCES [dbo].[Pizza] ([Id])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ItemPedido_Pizza1]') AND parent_object_id = OBJECT_ID(N'[dbo].[ItemPedido]'))
+ALTER TABLE [dbo].[ItemPedido] CHECK CONSTRAINT [FK_ItemPedido_Pizza1]
+GO
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Pedido_Cliente]') AND parent_object_id = OBJECT_ID(N'[dbo].[Pedido]'))
+ALTER TABLE [dbo].[Pedido]  WITH CHECK ADD  CONSTRAINT [FK_Pedido_Cliente] FOREIGN KEY([IdCliente])
+REFERENCES [dbo].[Cliente] ([Id])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Pedido_Cliente]') AND parent_object_id = OBJECT_ID(N'[dbo].[Pedido]'))
+ALTER TABLE [dbo].[Pedido] CHECK CONSTRAINT [FK_Pedido_Cliente]
+GO
