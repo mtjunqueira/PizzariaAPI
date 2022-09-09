@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzariaAPI", "PizzariaAPI.csproj", "{A1CDD5AF-4E84-483D-9E30-DB857BAC82F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzaria.Tests", "..\Pizzaria.Tests\Pizzaria.Tests.csproj", "{CF1F7B34-FE8F-4009-94B6-0C64026722C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1CDD5AF-4E84-483D-9E30-DB857BAC82F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1CDD5AF-4E84-483D-9E30-DB857BAC82F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1CDD5AF-4E84-483D-9E30-DB857BAC82F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1CDD5AF-4E84-483D-9E30-DB857BAC82F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF1F7B34-FE8F-4009-94B6-0C64026722C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF1F7B34-FE8F-4009-94B6-0C64026722C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF1F7B34-FE8F-4009-94B6-0C64026722C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF1F7B34-FE8F-4009-94B6-0C64026722C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {424926FC-8133-4CF5-B577-3E0F73E7B315}
+	EndGlobalSection
+EndGlobal
